@@ -6,15 +6,9 @@ async function main() {
   await prisma.course.createMany({
     data: [
       {
-        title: 'Introduction to Mixing',
-        description: 'Learn the basics of mixing audio.',
-        videoUrl: 'https://www.youtube.com/watch?v=example1',
-      },
-      {
-        title: 'Advanced Music Production',
-        description:
-          'A deep dive into professional music production techniques.',
-        videoUrl: 'https://www.youtube.com/watch?v=example2',
+        title: 'Mentor-video',
+        description: 'Mentor video for the landing page ',
+        videoUrl: 'https://www.youtube.com/watch?v=9Q_4vUDimdI',
       },
     ],
   });
