@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class CoursesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async findAll() {
     return this.prisma.course.findMany();
@@ -18,6 +18,16 @@ export class CoursesService {
   }
 
   async delete(id: string) {
-    return this.prisma.course.delete({ where: { id } });
+    const course = await this.prisma.course.findUnique({
+      where: { id },
+    });
+
+    if (!course) {
+      throw new NotFoundException(`Course with ID ${id} not found`);
+    }
+
+    return this.prisma.course.delete({
+      where: { id },
+    });
   }
 }
