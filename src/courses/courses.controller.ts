@@ -10,7 +10,7 @@ import {
 import { CoursesService } from './courses.service';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth/jwt-auth.guard';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard) uncomment once FE is ready
 @Controller('courses')
 export class CoursesController {
   constructor(private coursesService: CoursesService) {}
